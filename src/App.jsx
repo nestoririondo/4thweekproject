@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import Form from "./components/Form";
+import DisplayToDos from "./components/DisplayToDos";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  // This state should contain the array of to-dos
+  const [todos, setTodos] = useState([]);
 
   return (
-    <>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-    </>
-  )
+    <div className="App">
+      <Form setTodos={setTodos} />
+      <DisplayToDos todos={todos} setTodos={setTodos} />
+    </div>
+  );
 }
-
-export default App
