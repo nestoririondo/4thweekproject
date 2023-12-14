@@ -1,47 +1,45 @@
 import React, { useState } from "react";
 
-const Form = ({ setTodos }) => {
+const Form = ({ setTodos, handleLocalStorage }) => {
 
-  const [title, setTitle] = useState(""); // This state should contain the title of the to-do
+  const [taskText, setTaskText] = useState(""); // This state should contain the taskText of the to-do
 
-  const handleChange = (event) => setTitle(event.target.value); // Updates the title state with each keystroke
+  const handleChange = (event) => setTaskText(event.target.value); // Updates the taskText state with each keystroke
 
   const handleAdd = (event) => {
     event.preventDefault();
 
-    if (title.trim() === "") {
-      alert("Please fill all fields");
+    if (taskText.trim() === "") {
+      alert("Please write something");
     } else {
-      function updateTodos(whateverWasThereBefore) {       // We are DECLARING a function that puts
-        const newId = Math.floor(Math.random() * 1000000); // the new to-do at the end of the array
-        return [
-          ...whateverWasThereBefore,
-          {
-            id: newId,
-            title: title,
-            done: false,
-            important: false,
-          },
-        ];
+      const newId = Math.floor(Math.random() * 1000000000);
+
+      const newTodo = {
+        id: newId,
+        title: taskText, // We are using the title state
+        done: false,
+        important: false,
       }
-      setTodos(updateTodos); // We pass the function as an argument!!! so cool
-      setTitle("");
+
+      const updateTodos = (whateverWasThereBefore) => [...whateverWasThereBefore, newTodo];
+      // We are DECLARING a function that puts the new to-do at the end of the array
+      
+      setTodos(updateTodos); // And now we pass the function as an argument!!! damn
+      handleLocalStorage(newTodo)
+      setTaskText("");
     }
     }
 
   return (
     <div className="block">
       <form onSubmit={handleAdd}>
-          <div>
             <input
               onChange={handleChange}
-              name="title"
               type="text"
               placeholder="add task..."
-              value={title}
+              value={taskText}
             />
             <button type="submit">+</button>
-          </div>
       </form>
     </div>
   );
