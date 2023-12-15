@@ -3,24 +3,18 @@ import Form from "./components/Form";
 import DisplayToDos from "./components/DisplayToDos";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    if(localStorage.getItem('localTodos')){
+      return JSON.parse(localStorage.getItem('localTodos'))
+    } else {
+      return []
+    }
+    });
 
   useEffect(()=>{
-    if(localStorage.getItem('todos')){
-      console.log("localStorage tiene algo adentro")
-      setTodos(JSON.parse(localStorage.getItem('todos')))
-    }
-  },[])
+    localStorage.setItem('localTodos', JSON.stringify(todos))
+  },[todos])
 
-  const handleLocalStorage = (newTodo) => {
-    let newArr = [];
-    if(localStorage.getItem('todos')){
-      console.log("localStorage tiene algo adentro y lo vamos a llenar mas")
-      newArr = JSON.parse(localStorage.getItem('todos'))
-    }
-    newArr.push(newTodo)
-    localStorage.setItem('todos', JSON.stringify(newArr))
-  }
 
   // const deleteFromEverywhere = () => {
   //   // delete from useState
@@ -35,7 +29,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Form setTodos={setTodos} handleLocalStorage={handleLocalStorage}/>
+      <Form setTodos={setTodos}/>
       <DisplayToDos todos={todos} setTodos={setTodos} />
     </div>
   );

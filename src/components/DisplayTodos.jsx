@@ -1,24 +1,31 @@
 import ToDo from "./ToDo";
 
 const DisplayToDos = ({ todos, setTodos }) => {
+
   const toggleCompletion = (id) => {
     setTodos((prev) =>
       prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
     );
   };
+
+  const toggleImportant = (id) => {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, important: !t.important } : t))
+    );
+  }
+
 console.log(todos)
   return (
-    <div className="block">
-      <div className="card-container">
-        {todos.map((todo) => (
+    <ul>
+        {todos.map((item) => (
             <ToDo
-              key={todo.id}
-              todo={todo}
+              key={item.id}
+              eachTodo={item}
               toggleCompletion={toggleCompletion}
+              toggleImportant={toggleImportant}
             />
           ))}
-      </div>
-    </div>
+    </ul>
   );
 };
 

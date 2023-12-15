@@ -1,17 +1,16 @@
-const ToDo = ({ todo, toggleCompletion }) => {
+const ToDo = ({ eachTodo, toggleCompletion }) => {
     return (
-      <div>
+      <li>
         <input
-          id={`todo_${todo.id}`}
-          name={todo.title}
+          id={eachTodo.id}
+          name={eachTodo.title}
           type="checkbox"
-          value={todo.title}
-          checked={todo.done}
-          onChange={() => toggleCompletion(todo.id)}
+          value={eachTodo.title}
+          checked={eachTodo.done}
+          onChange={() => toggleCompletion(eachTodo.id)}
         />
-        <h3>{todo.title}</h3>
-      </div>
+        <h3>{eachTodo.title}</h3>
+      </li>
     );
   };
   export default ToDo;
-  
