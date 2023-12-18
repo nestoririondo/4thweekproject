@@ -13,23 +13,12 @@ const App = () => {
     localStorage.setItem('localTodos', JSON.stringify(todos)) // saves todo to localStorage when todos changes
     },[todos])
 
-  // const deleteFromEverywhere = () => {
-  //   // delete from useState
-  //   // edit out from localStorage
-  // }
-
-  // const editEverywhere = () => {
-  //   // edit from useState
-  //   // edit localStorage using the todos useState
-
-  // }
-
   return (
     <div className="outer">
-    <div className="container">
-      <Form setTodos={setTodos} id="form"/>
-      <DisplayToDos todos={todos} setTodos={setTodos} />
-    </div>
+      <div className="container">
+        <Form setTodos={setTodos} id="form"/>
+        <DisplayToDos todos={todos} setTodos={setTodos} />
+     </div>
     </div>
   );
 }

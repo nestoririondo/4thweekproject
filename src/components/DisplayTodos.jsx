@@ -2,9 +2,7 @@ import ToDo from "./ToDo";
 
 const DisplayToDos = ({ todos, setTodos,  }) => {
 
-
-
-  const toggleCompletion = (id) => {
+  const toggleCompletion = (id) => {    
     setTodos((previousTodos) =>
     previousTodos.map((item) => (item.id === id ? { ...item, done: !item.done } : item))
     );
@@ -21,7 +19,7 @@ const DisplayToDos = ({ todos, setTodos,  }) => {
     const newTitle = prompt("Please enter new title", taskToEdit.title);
     if (newTitle === null) return;
     setTodos((previousTodos) =>
-    previousTodos.map((item) => (item.id === id ? { ...item, title: newTitle } : item))
+      previousTodos.map((item) => (item.id === id ? { ...item, title: newTitle } : item))
     );
   }
   

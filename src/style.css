@@ -40,8 +40,6 @@ body {
     border-radius: 5px;
 }
 #addButton {
-    visibility: hidden;
-    padding:;
     font-family: 'Architects Daughter', cursive;    
     font-size: 1.7rem;
     height: 3rem;
