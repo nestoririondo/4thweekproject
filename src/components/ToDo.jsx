@@ -1,4 +1,4 @@
-const ToDo = ({ item, toggleCompletion }) => {
+const ToDo = ({ item, toggleCompletion, editTask }) => {
     return (
       <li className="taskItem">
         <input
@@ -8,7 +8,8 @@ const ToDo = ({ item, toggleCompletion }) => {
           checked={item.done}
           onChange={() => toggleCompletion(item.id)}
         />
-        <h3>{item.title}</h3>
+        <span>{item.title}</span>
+        <button onClick={() => editTask(item.id)}>Edit</button>
       </li>
     );
   };
