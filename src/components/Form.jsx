@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid'; // unique ID generation
 
 const Form = ({ setTodos }) => {
 
@@ -10,10 +11,8 @@ const Form = ({ setTodos }) => {
 
     if (taskText.trim() === "") return;
 
-    const newId = Math.floor(Math.random() * 1000000000);
-
     const newTodo = {
-      id: newId,
+      id: uuidv4(),
       title: taskText,
       done: false,
       important: false,
@@ -26,7 +25,7 @@ const Form = ({ setTodos }) => {
     }
 
   return (
-      <form onSubmit={handleSubmit}>
+      <form id="form" onSubmit={handleSubmit}>
             <input
               onChange={handleChange}
               type="text"
@@ -34,7 +33,7 @@ const Form = ({ setTodos }) => {
               value={taskText}
               id="inputField"
             />
-            <button type="submit" id="addButton">+</button>
+            {taskText && <button type="submit" id="addButton">+</button>}
       </form>
   );
 };
