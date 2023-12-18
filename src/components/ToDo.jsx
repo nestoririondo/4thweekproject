@@ -1,15 +1,14 @@
-const ToDo = ({ eachTodo, toggleCompletion }) => {
+const ToDo = ({ item, toggleCompletion }) => {
     return (
-      <li>
+      <li className="taskItem">
         <input
-          id={eachTodo.id}
-          name={eachTodo.title}
+          id={item.id}
+          name={item.title}
           type="checkbox"
-          value={eachTodo.title}
-          checked={eachTodo.done}
-          onChange={() => toggleCompletion(eachTodo.id)}
+          checked={item.done}
+          onChange={() => toggleCompletion(item.id)}
         />
-        <h3>{eachTodo.title}</h3>
+        <h3>{item.title}</h3>
       </li>
     );
   };

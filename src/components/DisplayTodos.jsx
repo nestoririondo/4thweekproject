@@ -3,24 +3,22 @@ import ToDo from "./ToDo";
 const DisplayToDos = ({ todos, setTodos }) => {
 
   const toggleCompletion = (id) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+    setTodos((previousTodos) =>
+    previousTodos.map((item) => (item.id === id ? { ...item, done: !item.done } : item))
     );
   };
 
   const toggleImportant = (id) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, important: !t.important } : t))
+    setTodos((previousTodos) =>
+    previousTodos.map((item) => (item.id === id ? { ...item, important: !item.important } : item))
     );
   }
 
-console.log(todos)
   return (
     <ul>
         {todos.map((item) => (
             <ToDo
-              key={item.id}
-              eachTodo={item}
+              item={item} 
               toggleCompletion={toggleCompletion}
               toggleImportant={toggleImportant}
             />
