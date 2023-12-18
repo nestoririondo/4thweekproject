@@ -79,11 +79,11 @@ body {
 .taskItem span {
     flex: 5;
     word-break: break-all;
+    &:focus {
+        outline: 1px solid grey;
+    }
 }
 
-.taskItem span:focus {
-    outline: 1px solid grey;
-}
 .completed {
     text-decoration: line-through;
     color: grey;
@@ -92,13 +92,13 @@ body {
 .checkbox {
     width: 30px;
     height: 30px;
-}
-
-.checkbox:hover {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    background-image: url(/images/checked.png);
+    &:hover {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-image: url(/images/checked.png);
+    }
 }
 
 .star {
@@ -109,10 +109,11 @@ body {
     cursor: pointer;
     margin-right: 1rem;
     margin-bottom: 1px;
+    &:hover {
+        opacity: 1;
+    }
 }
-.star:hover {
-    opacity: 1;
-}
+
 .visible {
     visibility: visible;
 }
