@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 
-const ToDo = ({ item, toggleCompletion, toggleImportant, editTask }) => {
+const ToDo = ({ item, toggleCompletion, toggleImportant, setTodos }) => {
 const [hovered, setHovered] = useState(false);
+const [editing, setEditing] = useState(false);
+const [newTitle, setNewTitle] = useState("");
   
+  const handleEdit = (id) => {
+    setEditing(!editing);
+    newTitle.trim() && setTodos((previousTodos) =>
+    previousTodos.map((item) => (item.id === id ? { ...item, title: newTitle } : item))
+    );
+    setNewTitle("");
+  }
+
     return (
       <li 
       className={item.done ? "taskItem completed" : "taskItem"}
@@ -15,7 +25,19 @@ const [hovered, setHovered] = useState(false);
           className="checkbox"
           onClick={() => toggleCompletion(item.id)}
         />
-        <span>{item.title}</span>
+
+        {editing ?
+         <input
+            type="text"
+            id="editingTask"
+            placeholder={item.title} 
+            onChange={(e) => setNewTitle(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleEdit(item.id)}
+            autoFocus
+         /> 
+         :
+          <span>{item.title}</span>}
+        
         <img
           src={item.important ? "src/images/starFull.png" : "src/images/starEmpty.png"}
           alt="star"
@@ -23,12 +45,13 @@ const [hovered, setHovered] = useState(false);
           onClick={() => toggleImportant(item.id)}
         />
         <img
-        src="src/images/edit.png"
-        alt="edit"
-        className={hovered ? "edit visible" : "edit"}
-        onClick={() => editTask(item.id)}
+          src={editing ? "src/images/editOK.png" : "src/images/edit.png"}
+          alt="edit"
+          className={hovered ? "edit visible" : "edit"}
+          onClick={() => handleEdit(item.id)}
         />
       </li>
     );
   };
+
   export default ToDo;
