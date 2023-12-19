@@ -12,26 +12,17 @@ const App = () => {
     }
   },[])
 
-  const handleLocalStorage = (newTodo) => {
-    let newArr = [];
+  const handleLocalStorage = (newTodo) => { 
+    let newArr = []; /*  1. Obtener las tareas actuales de localStorage o crear un arreglo vacío    */
     if(localStorage.getItem('todos')){
       console.log("localStorage tiene algo adentro y lo vamos a llenar mas")
       newArr = JSON.parse(localStorage.getItem('todos'))
     }
-    newArr.push(newTodo)
+    newArr.push(newTodo) // 3. Actualizar el localStorage con el nuevo arreglo de tareas
     localStorage.setItem('todos', JSON.stringify(newArr))
   }
 
-  // const deleteFromEverywhere = () => {
-  //   // delete from useState
-  //   // edit out from localStorage
-  // }
-
-  // const editEverywhere = () => {
-  //   // edit from useState
-  //   // edit localStorage using the todos useState
-
-  // }
+  
 
   return (
     <div className="App">
