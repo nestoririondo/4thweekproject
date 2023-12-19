@@ -82,6 +82,15 @@ body {
     }
 }
 
+.taskItem input {
+    flex: 5;
+    font-size: 1.6rem;
+    padding: 0.178rem;
+    border: 1px solid blue;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+
 .completed {
     text-decoration: line-through;
     color: grey;
