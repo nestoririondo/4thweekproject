@@ -1,24 +1,39 @@
 import ToDo from "./ToDo";
 
-const DisplayToDos = ({ todos, setTodos }) => {
-  const toggleCompletion = (id) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+const DisplayToDos = ({ todos, setTodos,  }) => {
+
+  const toggleCompletion = (id) => {    
+    setTodos((previousTodos) =>
+    previousTodos.map((item) => (item.id === id ? { ...item, done: !item.done } : item))
     );
   };
-console.log(todos)
+
+  const toggleImportant = (id) => {
+    setTodos((previousTodos) =>
+    previousTodos.map((item) => (item.id === id ? { ...item, important: !item.important } : item))
+    );
+  }
+
+  const editTask = (id) => {
+    const taskToEdit = todos.find((it) => it.id === id);
+    const newTitle = prompt("Please enter new title", taskToEdit.title);
+    if (newTitle === null) return;
+    setTodos((previousTodos) =>
+      previousTodos.map((item) => (item.id === id ? { ...item, title: newTitle } : item))
+    );
+  }
+  
   return (
-    <div className="block">
-      <div className="card-container">
-        {todos.map((todo) => (
+    <ul>
+        {todos.map((item) => (
             <ToDo
-              key={todo.id}
-              todo={todo}
+              item={item} 
               toggleCompletion={toggleCompletion}
+              toggleImportant={toggleImportant}
+              editTask={editTask}
             />
           ))}
-      </div>
-    </div>
+    </ul>
   );
 };
 
