@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import DisplayToDos from "./components/DisplayToDos";
+import DeleteButtons from "./components/DeleteButtons"
 import "./style.css";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <div className="container">
         <Form setTodos={setTodos} id="form"/>
         <DisplayToDos todos={todos} setTodos={setTodos} />
+        <DeleteButtons todos={todos} setTodos={setTodos} />
       </div>
     </div>
   );
