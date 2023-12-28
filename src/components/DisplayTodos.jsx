@@ -3,9 +3,8 @@ import ToDo from "./ToDo";
 const DisplayToDos = ({ todos, setTodos }) => {
 
   const toggleCompletion = (id) => {    
-    setTodos((previousTodos) =>
-    previousTodos.map((item) => (item.id === id ? { ...item, done: !item.done } : item))
-    );
+    const updatedTodos = (previousTodos) => previousTodos.map((item) => (item.id === id ? { ...item, done: !item.done } : item));
+    setTodos(updatedTodos);
   };
 
   const toggleImportant = (id) => {

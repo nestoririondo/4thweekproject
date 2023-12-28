@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import DisplayToDos from "./components/DisplayToDos";
+import DeleteButtons from "./components/DeleteButtons"
 import "./style.css";
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
   const [todos, setTodos] = useState(() => {
     const localTodos = localStorage.getItem('localTodos');
     return localTodos ? JSON.parse(localTodos) : [];})
+
 
   useEffect(()=>{ 
     localStorage.setItem('localTodos', JSON.stringify(todos)) // saves todo to localStorage when todos changes
@@ -18,7 +20,8 @@ const App = () => {
       <div className="container">
         <Form setTodos={setTodos} id="form"/>
         <DisplayToDos todos={todos} setTodos={setTodos} />
-     </div>
+        <DeleteButtons todos={todos} setTodos={setTodos} />
+      </div>
     </div>
   );
 }

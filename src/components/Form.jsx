@@ -18,7 +18,8 @@ const Form = ({ setTodos }) => {
       important: false,
     }
 
-    const updateTodos = (whateverWasThereBefore) => [...whateverWasThereBefore, newTodo]; // We are DECLARING a function that puts the newly created to-do at the end of the array of to-dos
+    const updateTodos = (whateverWasThereBefore) => [...whateverWasThereBefore, newTodo];
+    // We are DECLARING a function that puts the newly created to-do at the end of the array of to-dos
     setTodos(updateTodos); // And now we pass the function as an argument!!! This is the magic of useState
 
     setTaskText("");
@@ -33,6 +34,7 @@ const Form = ({ setTodos }) => {
               value={taskText}
               id="inputField"
             />
+
             {taskText && <button type="submit" id="addButton">+</button>}
       </form>
   );
