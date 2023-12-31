@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import trashcanImage from "../images/trashcan.png";
+ 
 const ToDo = ({ item, toggleCompletion, toggleImportant, setTodos }) => {
 const [hovered, setHovered] = useState(false);
 const [editing, setEditing] = useState(false);
@@ -13,7 +14,14 @@ const [newTitle, setNewTitle] = useState("");
     setNewTitle("");
   }
 
+  const handleDelete = () => {
+    
+    setTodos((previousTodos) => previousTodos.filter((todo) => todo.id !== item.id));
+      
+  };
+
     return (
+      <>
       <li 
       className={item.done ? "taskItem completed" : "taskItem"}
       onMouseEnter={() => setHovered(true)}
@@ -50,7 +58,15 @@ const [newTitle, setNewTitle] = useState("");
           className={hovered ? "edit visible" : "edit"}
           onClick={() => handleEdit(item.id)}
         />
+        <img
+            src={trashcanImage}
+            alt="Delete"
+            onClick={handleDelete}
+            style={{ cursor: "pointer" }}
+            className={hovered ? "trashcan visible" : "trashcan"}
+          />
       </li>
+      </>
     );
   };
 
