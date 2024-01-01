@@ -62,7 +62,6 @@ const [newTitle, setNewTitle] = useState("");
             src={trashcanImage}
             alt="Delete"
             onClick={handleDelete}
-            style={{ cursor: "pointer" }}
             className={hovered ? "trashcan visible" : "trashcan"}
           />
       </li>

@@ -18,8 +18,8 @@ const DeleteButtons = ({ todos, setTodos }) => {
   return (
   <div className="extramenu">
     <div className="deleteButtons">
-        <button onClick={deleteAll}>Delete All</button>
-        <button onClick={deleteSelectedCompleted}>Delete Selected Completed</button>
+        <button id="clearAllButton" onClick={deleteAll}>Delete All</button>
+        <button onClick={deleteSelectedCompleted}>Delete Completed</button>
       </div>
   </div>
   );
