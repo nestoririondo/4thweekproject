@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import trashcanImage from "../images/trashcan.png";
+import checkedImage from "../images/checked.png";
+import uncheckedImage from "../images/unchecked.png";
+import starFullImage from "../images/starFull.png";
+import starEmptyImage from "../images/starEmpty.png";
+import editOKImage from "../images/editOK.png";
+import editImage from "../images/edit.png";
  
 const ToDo = ({ item, toggleCompletion, toggleImportant, setTodos }) => {
 const [hovered, setHovered] = useState(false);
@@ -28,7 +34,7 @@ const [newTitle, setNewTitle] = useState("");
       onMouseLeave={() => setHovered(false)}
       >
         <img
-          src={item.done ? "src/images/checked.png" : "src/images/unchecked.png"}
+          src={item.done ? checkedImage : uncheckedImage}
           alt="checkbox" 
           className="checkbox"
           onClick={() => toggleCompletion(item.id)}
@@ -47,13 +53,13 @@ const [newTitle, setNewTitle] = useState("");
           <span>{item.title}</span>}
         
         <img
-          src={item.important ? "src/images/starFull.png" : "src/images/starEmpty.png"}
+          src={item.important ? starFullImage : starEmptyImage}
           alt="star"
           className={item.important ? "star important visible" : hovered ? "star visible" : "star"}
           onClick={() => toggleImportant(item.id)}
         />
-        <img
-          src={editing ? "src/images/editOK.png" : "src/images/edit.png"}
+        <img 
+          src={editing ? editOKImage : editImage}
           alt="edit"
           className={hovered ? "edit visible" : "edit"}
           onClick={() => handleEdit(item.id)}

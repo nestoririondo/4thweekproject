@@ -3,6 +3,7 @@ import Form from "./components/Form";
 import DisplayToDos from "./components/DisplayToDos";
 import DeleteButtons from "./components/DeleteButtons";
 import "./style.css";
+import hamburgerImage from "../src/images/hamburger.png";
 
 const App = () => {
   const [secondContainerActive, setSecondContainerActive] = useState(false);
@@ -27,7 +28,7 @@ const App = () => {
       </div>
       <div className="extramenu">
         <img
-          src="../src/images/hamburger.png"
+          src={hamburgerImage}
           className="hamburger"
           onClick={() => setSecondContainerActive(!secondContainerActive)}
         />
